@@ -1,0 +1,127 @@
+/* BASIC STYLES
+------------------------------------*/
+
+html, body{
+    background-color: #ebebeb;
+    font-family: "Open Sans", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: "Slabo 27px", serif;
+    margin: 0;
+    padding: 0.67em 0;
+}
+
+
+*{
+    box-sizing: border-box;
+}
+
+.row:before, 
+.row:after {
+    content:"";
+    display: table ;
+    clear:both;
+}
+
+h1{
+    display: inline-block;
+    background: #cc181e;
+    padding: 0.67em;
+    position: absolute;
+    top: 1.5em;
+    color: white;
+}
+
+/* SITE-HEADER
+------------------------------------*/
+header{
+    background-color: black;
+    height: auto;
+    min-height: 10vh;
+    margin-bottom: 3em;
+    position: relative;
+}
+
+/* MAIN
+------------------------------------*/
+main{
+    height: auto;
+    min-height: 70vh;
+}
+
+.add-box{
+    background: white;
+    margin: 1em 0;
+}
+
+.item{
+    background: white;
+    margin: 1em 0;
+}
+
+.edit, .done{
+
+}
+
+/* SITE-FOOTER
+------------------------------------*/
+footer{
+    height: auto;
+    min-height: 15vh;
+    background-color: #cc181e;
+    color: white;
+}
+
+footer p{
+    float: left;
+}
+
+footer a{
+    color: white;
+    text-decoration-style: dashed;
+}
+
+footer ul{
+    list-style: none;
+}
+
+footer ul li{
+    display: inline-block;
+    margin: 0 1em;
+}
+
+/* MEDIA QUERIES
+------------------------------------*/
+/* Grid based on http://adamkaplan.me/grid/ */
+@media only screen and (min-width: 40rem) {
+    .column{
+        float: left;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .column.full{
+        width: 100%;
+    }
+    
+    .column.two-thirds{
+        width: 66.7%;
+    }
+    
+    .column.half{
+        width: 50%;
+    }
+    
+    .column.third{
+        width: 33.3%;
+    }
+    
+    .column.fourth{
+        width: 25%;
+    }
+    
+    .column.flow-opposite{
+        float: right;
+    }
+}
