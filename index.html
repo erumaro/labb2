@@ -17,11 +17,13 @@
         </div>
     </header>
     <main class="row">
-        <section id="toDo" class="column third">
+        <section id="todo" class="column third">
             <h2>To do</h2>
             <div class="add-box row">
-                <button class="add">Add <i class="fa fa-plus-circle"></i></button>
+                <input id="newItem" type="text">
+                <button class="add" onclick="add();">Add <i class="fa fa-plus-circle"></i></button>
             </div>
+            <!--
             <div class="item row">
                 <div class="column half">
                     <p>Ät middag</p>
@@ -40,6 +42,7 @@
                     <button class="done">Complete <i class="fa fa-check"></i></button> 
                 </div>
             </div>
+            -->
         </section>
         <section id="done" class="column third">
             <h2>Done</h2>
