@@ -1,26 +1,12 @@
 var toDo = document.querySelector("#todo");
-var done = document.getElementById("done");
-
-window.onload = function() {
-
-  // Check for LocalStorage support.
-  if (localStorage) {
-
-    // Add an event listener for form submissions
-    toDo.addEventListener('click', function() {
-      // Get the value of the name field.
-      var listItem = document.getElementById('newItem').value;
-
-      // Save the name in localStorage.
-      localStorage.setItem('newItem', listItem);
-    });
-
-  }
-
-}
+var done = document.querySelector("#done");
+var i = 0;
+var j = 0;
 
 function add(){
+    i++;
     var row = document.createElement("DIV");
+    row.setAttribute("id", "item-"+i);
     row.classList.add("row", "item");
     var column1 = document.createElement("DIV");
     column1.classList.add("column", "half");
@@ -29,31 +15,59 @@ function add(){
     var p = document.createElement("P");
     var input = document.getElementById("newItem").value;
     var editButton = document.createElement("BUTTON");
-    editButton.classList.add("edit");
-    editButton.innerHTML = "Edit <i class='fa fa-pencil'></i>";
+    editButton.setAttribute("id", "edit");
+    editButton.innerHTML = "<i class='fa fa-pencil'></i>";
     var doneButton = document.createElement("BUTTON");
-    doneButton.classList.add("done");
-    doneButton.innerHTML = "Done <i class='fa fa-check'></i>";
-    if(input !== ""){
+    doneButton.setAttribute("id", "complete");
+    doneButton.innerHTML = "<i class='fa fa-check'></i>";
+    var removeButton = document.createElement("BUTTON");
+    removeButton.setAttribute("id", "remove");
+    removeButton.innerHTML = "<i class='fa fa-times'></i>";
+    if(input !== "" && toDo){
         todo.appendChild(row);
         row.appendChild(column1);
         row.appendChild(column2);
         column1.appendChild(p);
         p.textContent = input;
+        column2.appendChild(removeButton);
         column2.appendChild(doneButton);
         column2.appendChild(editButton);
+        editButton.addEventListener("click", edit);
+        doneButton.addEventListener("click", complete);
+        removeButton.addEventListener("click", remove);
     } else{
         alert("Please write something in field...");
     }
 }
 
-// Edit
-
+// Changes task text. Can't be empty.
 function edit(){
-    
+    var column1 = this.parentNode.previousElementSibling;
+    var p = column1.children[0];
+    var editTask = prompt("Edit task:", p.textContent);
+    if (editTask != '' && editTask != null) {
+        var newText = p.textContent = editTask;
+    }
 }
 
-// Remove
+function complete(){
+    var item = this.parentNode.parentNode;
+    var editButton = document.getElementById("edit");
+    var doneButton = document.getElementById("complete");
+    var column2 = item.lastElementChild;
+    column2.removeChild(editButton);
+    column2.removeChild(doneButton);
+    done.appendChild(item);
+}
+
+// Removes clicked item.
 function remove(){
+    var item = this.parentNode.parentNode;
     
+    var removeSafely = confirm("Are you sure you want to remove this task?");
+    if(removeSafely === true && item.parentNode === toDo){
+        toDo.removeChild(item);
+    } else if(removeSafely === true && item.parentNode === done){
+        done.removeChild(item);
+    }
 }
