@@ -65,7 +65,7 @@ main{
     justify-content: center;
 }
 
-#edit, #complete, #remove{
+[id^=edit-], [id^=remove-], [id^=complete-]{
     float: right;
 }
 
