@@ -1,7 +1,6 @@
 var toDo = document.querySelector("#todo");
 var done = document.querySelector("#done");
 var i = 0;
-var j = 0;
 
 function add(){
     i++;
